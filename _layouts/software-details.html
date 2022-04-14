@@ -171,6 +171,9 @@ layout: default
     </div>
   </div>
 </div>
+{% if page.cloud_data %}
+{% include deployment.html page=page lang=active_lang %}
+{% endif %}
 
 {% if description.screenshots.size > 0 or description.videos > 0 %}
 {% include tiled-gallery.html screenshots=description.screenshots videos=description.videos oembed=page.oEmbedHTML %}

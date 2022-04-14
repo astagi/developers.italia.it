@@ -1,0 +1,91 @@
+<div class="container page-software-detail">
+  <h2><svg class="icon">
+      <use href="/assets/svg/sprite.svg#it-piattaforme"></use>
+    </svg>Modalità di deploy</h2>
+  <p>In questa sezione sono evidenziate le possibili modalità di deploy della soluzione.</p>
+  <nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist" style="gap: 1rem;border: 0;">
+      <a id="nav-tab1-tab" data-toggle="tab" href="#nav-tab1" role="tab" aria-controls="nav-tab1"
+        class="nav-item btn btn-primary active" style="flex: 1 0 auto; justify-content: center;
+        ">Single Tier</a>
+      <a id="nav-tab2-tab" data-toggle="tab" href="#nav-tab2" role="tab" aria-controls="nav-tab2"
+        class="nav-item btn btn-primary" style="flex: 1 0 auto; justify-content: center;
+        ">Multi Tier</a>
+      <a class="nav-item btn btn-primary" id="nav-tab3-tab" data-toggle="tab" href="#nav-tab3" role="tab"
+        aria-controls="nav-tab3" style="flex: 1 0 auto; justify-content: center;
+        ">Local</a>
+    </div>
+  </nav>
+  <div class="tab-content" id="nav-tabContent">
+    <div class="tab-pane p-4 fade show active" id="nav-tab1" role="tabpanel" aria-labelledby="nav-tab1-tab">
+      <div class="row">
+        <div class="col-md-7">
+          {{ include.page.cloud_data.single_tier.generic_description[include.lang] | markdownify }}
+          {{ include.page.cloud_data.single_tier.launch_description[include.lang] | markdownify }}
+          <div class="row justify-content-center">
+            {% for prov in include.page.cloud_data.single_tier.providers %}
+            <div class="col-12 col-lg-6">
+              <!--start card-->
+              <div class="card-wrapper card-space">
+                <div class="card card-bg">
+                  <div class="card-body">
+                    <a href="{{prov.deploy_url}}">
+                      <button class="btn btn-primary btn-lg btn-icon" style="width: 100%; min-height: 90px;">
+                        <span class="">
+                          <img
+                            style="height: 40px;"
+                            src="/assets/images/cloud/{{prov.provider}}.svg">
+                        </span>
+                        <span>Deploy con {{prov.solution_name}}</span>
+                      </button>
+                    </a>
+                    <table class="table mt-4">
+                      <tbody>
+                        <tr></tr>
+                        <tr>
+                          <th scope="row"><span>OP Level <svg style="height: 1.3rem;" class="icon">
+                            <use xlink:href="/assets/svg/sprite.svg#it-help-circle"></use>
+                          </svg></span></th>
+                          <td>{{prov.op_level}}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <div class="it-card-footer">
+                      {% if prov.demo %}
+                      <a class="btn btn-primary btn-sm" style="width: 100%;" href="{{prov.demo}}">Lancia la demo</a>
+                      {% endif %}
+                      <a href="#" class="read-more">
+                        <span class="text">Scopri di più</span>
+                        <svg class="icon">
+                          <use xlink:href="/assets/svg/sprite.svg#it-arrow-right"></use>
+                        </svg>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--end card-->
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="offset-md-1 col-md-4">
+          <div class="drops-details">
+            {% for link in include.page.cloud_data.single_tier.links %}
+            <div class="goto doc">
+              <p>
+                <a href="{{link.url}}">
+                  <img alt="" src="/assets/icons/software_icons/it-documentazione.svg">
+                  {{link.title[include.lang]}}
+                </a>
+              </p>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="tab-pane p-4 fade" id="nav-tab2" role="tabpanel" aria-labelledby="nav-tab2-tab">Contenuto 2</div>
+    <div class="tab-pane p-4 fade" id="nav-tab3" role="tabpanel" aria-labelledby="nav-tab3-tab">Contenuto 3</div>
+  </div>
+</div>

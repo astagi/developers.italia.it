@@ -7,6 +7,8 @@ download-data:
 	wget --max-redirect 0 https://crawler.developers.italia.it/software-riuso.yml -O _data/crawler/software-riuso.yml
 	wget --max-redirect 0 https://crawler.developers.italia.it/software_scopes.yml -O _data/crawler/software_scopes.yml
 	wget --max-redirect 0 https://crawler.developers.italia.it/software_tags.yml -O _data/crawler/software_tags.yml
+	wget --max-redirect 0 https://raw.githubusercontent.com/italia/developers.italia.it-data/50a3a04bacbf7cf342edef1c895578c08cb51685/softwares/all.json -O _data/crawler/all_cloud.json
+	node scripts/merge_extradata_softwares.js
 
 	wget -P _data https://raw.githubusercontent.com/italia/developers.italia.it-data/main/github_members.yml
 	wget -P _data https://raw.githubusercontent.com/italia/developers.italia.it-data/main/github_teams.yml
